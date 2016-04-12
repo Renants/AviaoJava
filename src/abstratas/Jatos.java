@@ -1,20 +1,22 @@
 package abstratas;
 import Interfaces.Airplane;
 
-
 public abstract class Jatos implements Airplane {
 	
 	protected int		velocidade;
-	protected int		velocidadeMax;
+	protected int		velocidademax;
+	protected int		velocidademin;
 	protected int		autonomia;
 	protected int		capacidade;
 	protected boolean	gps;
 	protected boolean	noar;
+	protected boolean	reabastecimento;
 	protected String	modelo;
 	
 	public Jatos(){
 		noar = false;
 		gps = false;
+		
 }
 	
 	public  void	decolar(){
@@ -27,13 +29,12 @@ public abstract class Jatos implements Airplane {
 	
 	public void pousar(){
 		if ( this.noar == false ){
-			System.out.println("erro Airplane jah esta no ar.");
-			break;}
+			System.out.println("erro Airplane jah esta no ar.");}
 		else
 			System.out.println("reduza a velocidade em 1/3");
 			
-		}
-	}
+}
+	
 	
 	public void alterarVelocidade(){
 		if ( noar == false ){
@@ -41,13 +42,8 @@ public abstract class Jatos implements Airplane {
 		else	
 		System.out.println("Velociade desejada: ");
 		//leia velocidade;
-		if ( this.velocidade > this.velocidadeMax ){
-			System.out.println("erro velocidade maxima excedida: ");
-			break;}
-		else
-			setSpeed(v);
-			
-		}
+		// chame a função acelerar;
+}
 	
 	
 	public void setSpeed(int v){
@@ -60,7 +56,13 @@ public abstract class Jatos implements Airplane {
 
 	public void reabastecer(){
 		if (this.noar == false){
-			System.out.println("erro Airplane ainda em solo.");
-			break;}
-		else
-	}
+			System.out.println("erro Airplane ainda em solo.");}
+}
+	
+	public void acelerar(int v){
+		if (v > this.velocidademax && v<=0){
+			System.out.println("erro velocidade incorreta");}
+		setSpeed(v);
+}
+	
+}
