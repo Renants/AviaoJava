@@ -10,9 +10,11 @@ public class JatoMilitar extends Jatos {
 	protected ArrayList<String> tripulantes;
 	
 	public JatoMilitar(){
-		autonomia = 2000;
-		velocidademax = 1000;
-		velocidademin = 300;
+		Jatos("Rapotr",2000,350,2000,2);
+		this.turbo = true;
+		this.sensor= false;
+		this.projeteis = 1000;
+		this.misseis   = 4;
 	}
 	
 	
