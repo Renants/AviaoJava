@@ -10,13 +10,16 @@ public abstract class Jatos implements Airplane {
 	protected int		capacidade;
 	protected boolean	gps;
 	protected boolean	noar;
-	protected boolean	reabastecimento;
 	protected String	modelo;
 	
-	public Jatos(){
-		noar = false;
-		gps = false;
-		
+	public Jatos(String modelo, int vmax, int vmin, int aut,int cap){
+		this.noar = false;
+		this.gps = false;
+		this.modelo = modelo;
+		this.velocidademax = vmax;
+		this.velocidademin = vmin;
+		this.autonomia	   = aut;
+		this.capacidade	   = cap;
 }
 	
 	public  void	decolar(){
