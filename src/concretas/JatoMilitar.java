@@ -22,7 +22,7 @@ public class JatoMilitar extends Jatos {
 	public  void	disparar(int projeteis,int misseis){};
 	
 
-	public void		acelerar(int velocidade,boolean turbo){
+	public void acelerar(int velocidade,boolean turbo){
 		if ( turbo == true ){
 			if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
 			setSpeed( velocidade+ 200);}
