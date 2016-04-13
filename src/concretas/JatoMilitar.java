@@ -32,12 +32,12 @@ public class JatoMilitar extends Jatos {
 		else System.out.println("erro velocidade incorreta");
 		} 
 	
+	@override
 	public void reabastecer(){
     	if ( noar == false && sensor == false ){
     	System.out.println("Erro nos sensores de reabastecimento ")
     	}else{
-       
-        System.out.println("Avião de reabastecimento acoplado ao " );
+       	System.out.println("Avião de reabastecimento acoplado ao " );
         System.out.println("Reabastecimento do em andamento...");
         System.out.println( "Autonomia anterior: "this.autonomia );
         this.autonomia = this.autonomia + 5;
