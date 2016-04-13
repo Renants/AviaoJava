@@ -55,14 +55,22 @@ public abstract class Jatos implements Airplane {
 }
 
 	public void reabastecer(){
-		if (this.noar == false){
-			System.out.println("erro Airplane ainda em solo.");}
-}
-	@override
+    if ( noar == false ){
+    	System.out.println("Erro nos sensores")
+    }else{
+       
+        System.out.println("Avião de reabastecimento acoplado ao " );
+        System.out.println("Reabastecimento do em andamento...");
+        System.out.println( "Autonomia anterior: "this.autonomia );
+        this.autonomia = this.autonomia + 5;
+        System.out.println("Autonomia Atual: " this->autonomia); 
+    }
+	}
+        
+       
 	public void acelerar(int v){
 		if (v > this.velocidademax && v<=0){
 			System.out.println("erro velocidade incorreta");}
-		setSpeed(v);
-}
+		setSpeed(v);}
 	
 }
