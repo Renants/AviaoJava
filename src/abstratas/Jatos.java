@@ -56,11 +56,12 @@ public abstract class Jatos implements Airplane {
 	public int getSpeed(){
 		return this.velocidade;
 }
+	
 	@override
 	public void reabastecer(){
-    if ( noar == false ){
+    	if ( noar == false ){
     	System.out.println("Erro nos sensores")
-    }else{
+	 }else{
        
         System.out.println("Avião de reabastecimento acoplado ao " );
         System.out.println("Reabastecimento do em andamento...");
