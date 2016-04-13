@@ -58,7 +58,7 @@ public abstract class Jatos implements Airplane {
 		if (this.noar == false){
 			System.out.println("erro Airplane ainda em solo.");}
 }
-	
+	@override
 	public void acelerar(int v){
 		if (v > this.velocidademax && v<=0){
 			System.out.println("erro velocidade incorreta");}
