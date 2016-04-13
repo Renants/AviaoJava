@@ -72,7 +72,7 @@ public abstract class Jatos implements Airplane {
 	}
         
        
-	public void acelerar(int v){
+	public void acelerar(int v){ // metodo sobrecarregado na abstrata
 		if (v > this.velocidademax && v<=0){
 			System.out.println("erro velocidade incorreta");}
 		setSpeed(v);}
