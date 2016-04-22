@@ -68,7 +68,7 @@ public abstract class Jatos implements Airplane {
 	    	System.out.println("Erro nos sensores");
 		 }else{
 	       
-	        System.out.println("Avi√£o de reabastecimento acoplado ao "+modelo );
+	        System.out.println("Avi„o de reabastecimento acoplado ao "+modelo );
 	        System.out.println("Reabastecimento do em andamento...");
 	        System.out.println( "Autonomia anterior: " +this.autonomia );
 	        this.autonomia = this.autonomia + 5;

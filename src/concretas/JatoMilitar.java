@@ -1,8 +1,6 @@
 package concretas;
 import  abstratas.Jatos;
-import java.util.ArrayList;
 import java.util.Scanner;
-
 public class JatoMilitar extends Jatos {
 	 Scanner entrada = new Scanner(System.in);
      	int aux;
@@ -10,7 +8,6 @@ public class JatoMilitar extends Jatos {
 		protected int misseis;
 		protected boolean turbo;
 		protected boolean sensor;
-		protected ArrayList<String> tripulantes;
 		
 		public JatoMilitar(){
 			super("Raptor",2000,350,2000,2);
@@ -18,6 +15,14 @@ public class JatoMilitar extends Jatos {
 			this.sensor= false;
 			this.projeteis = 1000;
 			this.misseis   = 4;
+		}
+		
+		public JatoMilitar(String modelo, int vmax, int vmin, int aut,int cap,int projeteis, int misseis){
+			super("Raptor",vmax,vmin,aut,cap);
+			this.turbo = true;
+			this.sensor= false;
+			this.projeteis = projeteis;
+			this.misseis   = misseis;
 		}
 		
 		
@@ -56,7 +61,7 @@ public class JatoMilitar extends Jatos {
 	    	if ( noar == false && sensor == false ){
 	    	System.out.println("Erro nos sensores de reabastecimento ");
 	    	}else{
-	       	System.out.println("Avi√£o de reabastecimento acoplado ao " );
+	       	System.out.println("Avi„o de reabastecimento acoplado ao "+modelo );
 	        System.out.println("Reabastecimento do em andamento...");
 	        System.out.println( "Autonomia anterior: " +this.autonomia );
 	        this.autonomia = this.autonomia + 5;
@@ -71,6 +76,21 @@ public class JatoMilitar extends Jatos {
 		sensor = true;
 		reabastecer();}
 
+		public void embarcar(){
+			if ( noar){
+			String nome;
+			System.out.println("Nome do tripulante: ");
+			nome = entrada.nextLine();
+			setAbordo(nome);}
+			else
+			System.out.println("Erro" + this.modelo +"ainda em solo");	
+		}
+		
+		public void atacar(){
+			disparar(0);
+			disparar(0,2);
+		}
+		
 	}
 
 
