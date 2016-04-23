@@ -1,98 +1,117 @@
 package principal;
+import static interfaces.Airplane.frame;
+import interfaces.Airplane;
 import concretas.JatoMilitar;
 import	concretas.JatoCivil;
-import	abstratas.Jatos;
 import javax.swing.JOptionPane;
-
 public class Main {
-
+	public static Airplane jato;
+	
 	public static void main(String[] args) {
-		int op;
-		String str;
-		JOptionPane.showMessageDialog(null,"****Hangar Helios One****");
-		Jatos jato;
-		str = JOptionPane.showInputDialog(null, "Jato Militar -1-\n"
-												+"Jato Civil -2-"
-												+"Sair -0-");
-		op = Integer.parseInt( str.trim()  );
-			switch ( op ){
-			case 1:
+		String[] Hangar = {"Jato Militar","Jato Civil", "Drone"};
+		 String  escolha = (String) JOptionPane.showInputDialog(frame, "Escolha uma Aéronave", "Hangar", JOptionPane.QUESTION_MESSAGE, null, Hangar, Hangar[0]);
+	    if (escolha == null) {
+            escolha = "0";}
+
+			switch ( escolha ){
+			case "Jato Militar":
 				jato = new JatoMilitar();
-				menu( jato );
 				break;
-			case 2:
+			case "Jato Civil":
 				jato = new JatoCivil();
-				menu( jato );
-			case 3:
-				JOptionPane.showConfirmDialog(null, "Desesa realmente sair");
+				break;
+			case "Drone":
+				JOptionPane.showConfirmDialog(null, "Drone ainda nao implementado!!!");
+				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Erro...");
-			}
+				
+			} while( menu( escolha) == 0 );
 	}
 
-	public static void menu( Jatos j ){
+	public static int menu(String escolha){
 		String str;
 		int op;
-		if ( j instanceof JatoMilitar ){
+		if ( escolha == "Jato Militar" ){
 			str = JOptionPane.showInputDialog(null,
-					"Decolar		-1-"
-					+"Velocidade	-2-"
-					+"Embarcar		-3-"
-					+"Reabastecer	-4-"
-					+"Atacar		-5-"
-					+"Pousar		-6-");
+					"Decolar		-1-\n"
+					+"Velocidade	-2-\n"
+					+"Embarcar		-3-\n"
+					+"Reabastecer	-4-\n"
+					+"Atacar		-5-\n"
+					+"Pousar		-6-\n");
 			op = Integer.parseInt( str.trim()  );
 				switch (op){
 				case 1:
-					j.decolar();
+					jato.decolar();
 					break;
 				case 2:
-					j.alterarVelocidade();
+					jato.alterarVelocidade();
 					break;
 				case 3:
-					((JatoMilitar) j).embarcar();
+					((JatoMilitar) jato).embarcar();
 					break;
 				case 4:
-					((JatoMilitar) j).reabastecimentoAerio();
+					((JatoMilitar) jato).reabastecimentoAerio();
 					break;
 				case 5:
-					((JatoMilitar) j).atacar();
+					((JatoMilitar) jato).atacar();
 					break;
 				case 6:
-					j.pousar();
+					jato.pousar();
 				default:
 					System.out.println("Erro");	}
 				}
+	
 		
-		
-		else if ( j instanceof JatoCivil ){
+		else if ( escolha == "Jato Civil" ){
 			str = JOptionPane.showInputDialog(null,
-					"Decolar		-1-"
-					+"Velocidade	-2-"
-					+"Embarcar		-3-"
-					+"Reabastecer	-4-");
+					"Decolar		-1-\n"
+					+"Velocidade	-2-\n"
+					+"Embarcar		-3-\n"
+					+"Reabastecer	-4-\n");
 			
 			op = Integer.parseInt( str.trim()  );
 			switch (op){
 			case 1:
-				j.decolar();
+				jato.decolar();
 				break;
 			case 2:
-				j.alterarVelocidade();
+				jato.alterarVelocidade();
 				break;
 			case 3:
-				((JatoCivil) j).embarcar();
+				((JatoCivil) jato).embarcar();
 				break;
 			case 4:
-				j.reabastecer();
+				jato.reabastecer();
 				break;
 			case 5:
-				j.pousar();
+				jato.pousar();
 				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Erro");}
 	}
-	
+		else{
+			str = JOptionPane.showInputDialog(null,
+					"Decolar		-1-\n"
+					+"Velocidade	-2-\n"
+					+"Pousar		-3-\n");
+			
+			op = Integer.parseInt( str.trim()  );
+			switch (op){
+			case 1:
+				jato.decolar();
+				break;
+			case 2:
+				jato.alterarVelocidade();
+				break;
+			case 3:
+				jato.pousar();
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,"Erro");}
+		}
+			return 0;
 	}
 
 }
