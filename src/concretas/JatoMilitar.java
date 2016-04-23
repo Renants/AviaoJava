@@ -1,14 +1,15 @@
 package concretas;
 import  abstratas.Jatos;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 public class JatoMilitar extends Jatos {
-	 Scanner entrada = new Scanner(System.in);
-     	int aux;
+		Scanner entrada = new Scanner (System.in);
 		protected int projeteis;
 		protected int misseis;
 		protected boolean turbo;
 		protected boolean sensor;
-		
+		int aux;
 		public JatoMilitar(){
 			super("Raptor",2000,350,2000,2);
 			this.turbo = true;
@@ -28,20 +29,20 @@ public class JatoMilitar extends Jatos {
 		
 		public  void	disparar(int projeteis){
 			if ( projeteis == 0){
-				 System.out.println("erro sem projeteis");
+				 JOptionPane.showMessageDialog(null, "erro sem projeteis");
 			}
 			else
-				System.out.println("disparo feito");
+				JOptionPane.showMessageDialog(null, "disparo feito");
 				this.projeteis-= 4;
 		};
 		
 		public  void	disparar(int projeteis,int misseis){
 			if ( this.projeteis == 0 | this.misseis == 0){
-				 System.out.println("erro sem projeteis");
-				 System.out.println("erro sem projeteis");
+				JOptionPane.showMessageDialog(null, "erro sem projeteis"
+													+"erro sem misseis");
 			}
 			else
-				System.out.println("disparo feito");
+				JOptionPane.showMessageDialog(null, "Disparo feito");
 				this.projeteis-= 4;
 		};
 		
@@ -59,19 +60,19 @@ public class JatoMilitar extends Jatos {
 		@Override
 		public void reabastecer(){
 	    	if ( noar == false && sensor == false ){
-	    	System.out.println("Erro nos sensores de reabastecimento ");
+	    	JOptionPane.showMessageDialog(null, "Erro nos sensores de reabastecimento ");
 	    	}else{
-	       	System.out.println("Avião de reabastecimento acoplado ao "+modelo );
-	        System.out.println("Reabastecimento do em andamento...");
-	        System.out.println( "Autonomia anterior: " +this.autonomia );
+	    	JOptionPane.showMessageDialog(null, "Avião de reabastecimento acoplado ao "+modelo
+	    			+"Reabastecimento do em andamento..."
+	    			+"Autonomia anterior: " +this.autonomia);
 	        this.autonomia = this.autonomia + 5;
-	        System.out.println("Autonomia Atual: " +this.autonomia); }
+	        JOptionPane.showMessageDialog(null,"Autonomia Atual: " +this.autonomia); }
 	}
 		
 		public void reabastecimentoAerio(){
-		while( aux > velocidade - (velocidade/3) ){
-		System.out.println("reduza a velocidade em 1/3");
-		aux = entrada.nextInt();}
+		do{
+		System.out.println();
+		this.aux = entrada.nextInt();} while(this.aux > velocidade - (velocidade/3) );
 		acelerar(aux);
 		sensor = true;
 		reabastecer();}
@@ -79,11 +80,10 @@ public class JatoMilitar extends Jatos {
 		public void embarcar(){
 			if ( noar){
 			String nome;
-			System.out.println("Nome do tripulante: ");
-			nome = entrada.nextLine();
+			nome = JOptionPane.showInputDialog(null,"Nome do tripulante: ");
 			setAbordo(nome);}
 			else
-			System.out.println("Erro" + this.modelo +"ainda em solo");	
+				JOptionPane.showMessageDialog(null,"Erro" + this.modelo +"ainda em solo");	
 		}
 		
 		public void atacar(){

@@ -6,11 +6,10 @@ public abstract class Drones implements Airplane {
 	protected int		autonomia;
 	protected int		velocidademax;
 	protected int		velocidademin;
-	protected int		autonomia;
 	protected int		misseis;
 	protected boolean	gps;
 	protected boolean	noar;
-	
+	String modelo;
 	public Drones(){
 		this.noar = false;
 		this.gps = false;
@@ -23,7 +22,7 @@ public abstract class Drones implements Airplane {
 		this.modelo = modelo;
 		this.velocidademax = vmax;
 		this.velocidademin = vmin;
-		this.misseis;	   = mss		   	
+		this.misseis	   = mss;		   	
 	}
 	
 	public  void decolar(){

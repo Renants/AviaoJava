@@ -2,19 +2,20 @@ package principal;
 import concretas.JatoMilitar;
 import	concretas.JatoCivil;
 import	abstratas.Jatos;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner entrada = new Scanner (System.in);
-		System.out.println("****Hangar Helios One****");
+		int op;
+		String str;
+		JOptionPane.showMessageDialog(null,"****Hangar Helios One****");
 		Jatos jato;
-		int opt;
-			System.out.println("Jato Militar -1-");
-			System.out.println("Jato Civil -2-");
-			opt = entrada.nextInt();
-			switch (opt){
+		str = JOptionPane.showInputDialog(null, "Jato Militar -1-\n"
+												+"Jato Civil -2-"
+												+"Sair -0-");
+		op = Integer.parseInt( str.trim()  );
+			switch ( op ){
 			case 1:
 				jato = new JatoMilitar();
 				menu( jato );
@@ -22,25 +23,26 @@ public class Main {
 			case 2:
 				jato = new JatoCivil();
 				menu( jato );
+			case 3:
+				JOptionPane.showConfirmDialog(null, "Desesa realmente sair");
 			default:
-			System.out.println("Erro...");
+				JOptionPane.showMessageDialog(null,"Erro...");
 			}
-				
-		entrada.close();		
 	}
 
 	public static void menu( Jatos j ){
+		String str;
+		int op;
 		if ( j instanceof JatoMilitar ){
-				Scanner entrada = new Scanner (System.in);
-				System.out.println("Decolar -1-");
-				System.out.println("Velocidade -2-");
-				System.out.println("Embarcar -3-");
-				System.out.println("Reabastecer -4-");
-				System.out.println("Atacar -5-");
-				int opt;
-				opt = entrada.nextInt();
-				entrada.close();
-				switch (opt){
+			str = JOptionPane.showInputDialog(null,
+					"Decolar		-1-"
+					+"Velocidade	-2-"
+					+"Embarcar		-3-"
+					+"Reabastecer	-4-"
+					+"Atacar		-5-"
+					+"Pousar		-6-");
+			op = Integer.parseInt( str.trim()  );
+				switch (op){
 				case 1:
 					j.decolar();
 					break;
@@ -64,15 +66,14 @@ public class Main {
 		
 		
 		else if ( j instanceof JatoCivil ){
-			Scanner entrada = new Scanner (System.in);
-			System.out.println("Decolar -1-");
-			System.out.println("Velocidade -2-");
-			System.out.println("Embarcar -3-");
-			System.out.println("Reabastecer -4-");
-			int opt;
-			opt = entrada.nextInt();
-			entrada.close();
-			switch (opt){
+			str = JOptionPane.showInputDialog(null,
+					"Decolar		-1-"
+					+"Velocidade	-2-"
+					+"Embarcar		-3-"
+					+"Reabastecer	-4-");
+			
+			op = Integer.parseInt( str.trim()  );
+			switch (op){
 			case 1:
 				j.decolar();
 				break;
@@ -89,7 +90,7 @@ public class Main {
 				j.pousar();
 				break;
 			default:
-				System.out.println("Erro");}
+				JOptionPane.showMessageDialog(null,"Erro");}
 	}
 	
 	}
