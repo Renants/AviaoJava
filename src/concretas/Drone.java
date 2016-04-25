@@ -38,8 +38,7 @@ public class Drone extends Jatos {
 	}
 		
 		
-			
-		public void acelerar(int velocidade,boolean turbo){
+			public void acelerar(int velocidade,boolean turbo){
 			if ( turbo == true ){
 				if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
 				this.velocidade = velocidade+ 200 ; }
