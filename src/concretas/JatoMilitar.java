@@ -54,6 +54,8 @@ public class JatoMilitar extends Jatos {
 			else JOptionPane.showMessageDialog(null,"erro, velocidade incorreta");
 			} 
 		
+	
+		
 		@Override
 		public void reabastecer(){
 	    	if ( noar == false && sensor == false ){
@@ -62,7 +64,7 @@ public class JatoMilitar extends Jatos {
 	    	JOptionPane.showMessageDialog(null, "Avião de reabastecimento acoplado ao "+modelo
 	    			+"\nReabastecimento do em andamento..."
 	    			+"\nAutonomia anterior: " +this.autonomia);
-	        this.autonomia = this.autonomia + 5;
+	        this.autonomia = this.autonomia + 500;
 	        JOptionPane.showMessageDialog(null,"Autonomia Atual: " +this.autonomia); }
 	}
 		
@@ -70,7 +72,7 @@ public class JatoMilitar extends Jatos {
 		int aux;
 		do{
 		String	str = JOptionPane.showInputDialog(null,"Velocidade atual: "+this.velocidade
-				+"Reduza a velocidade em pelo 1/3");
+				+"\nReduza a velocidade em para: "+(this.velocidade - this.velocidade/3) );
 		 aux = Integer.parseInt( str.trim()  );
 		}while(aux > velocidade - (velocidade/3) );
 		acelerar(aux);

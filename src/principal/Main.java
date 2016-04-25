@@ -22,10 +22,10 @@ public class Main {
 				jato = new JatoCivil();
 				break;
 			case "Drone":
-				JOptionPane.showConfirmDialog(null, "Drone ainda nao implementado!!!");
+				jato = new Drone();
 				break;
 			default:
-				JOptionPane.showMessageDialog(null,"Erro...");
+				System.exit(0);
 				
 			} while( menu( escolha) == 0 );
 	}
@@ -64,13 +64,12 @@ public class Main {
 					System.out.println("Erro");	}
 				}
 	
-		
 		else if ( escolha == "Jato Civil" ){
 			str = JOptionPane.showInputDialog(null,
-					"Decolar		-1-\n"
-					+"Velocidade	-2-\n"
-					+"Embarcar		-3-\n"
-					+"Reabastecer	-4-\n");
+					"Decolar			-1-\n"
+					+"Velocidade		-2-\n"
+					+"Embarcar			-3-\n"
+					+"Reabastecer		-4-\n");
 			
 			op = Integer.parseInt( str.trim()  );
 			switch (op){
@@ -118,11 +117,13 @@ public class Main {
 	}
 
 	public static void atacar( Jatos jato ){
+		String str = "";
+		int op = 0;
 		if ( jato instanceof JatoMilitar ){
-			String str = JOptionPane.showInputDialog(null,
+			str = JOptionPane.showInputDialog(null,
 					"Projeteis		-1-\n"
 					+"Misseis		-2-\n");
-			int op = Integer.parseInt( str.trim()  );
+			op = Integer.parseInt( str.trim()  );
 			switch ( op ){
 			case 1:
 				((JatoMilitar) jato).dispararProjeteis(2);
@@ -134,7 +135,20 @@ public class Main {
 				JOptionPane.showMessageDialog(null,"Erro");	
 			}}
 			else if ( jato instanceof Drone )
-			((Drone) jato).dispararMisseis(1);
+				str = JOptionPane.showInputDialog(null,
+						"Misseis				-1-\n"
+						+"Auto-destruição		-2-\n");
+				op = Integer.parseInt( str.trim()  );
+				switch ( op ){
+				case 1:
+				((Drone) jato).dispararMisseis(1);
+				break;
+				case 2:
+				JOptionPane.showMessageDialog(null,"Drone jah era");
+				System.exit(0);
+				}
+				
+				
 		}
 	
 }

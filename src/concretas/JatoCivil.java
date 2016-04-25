@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class JatoCivil extends Jatos {
 	Scanner entrada = new Scanner(System.in);
 	protected int passageiros;
-	
+
 	public JatoCivil(){
 		super("Comcorde",2000,350,2000,2);
 		this.passageiros = 32;

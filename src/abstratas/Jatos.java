@@ -39,17 +39,18 @@ public abstract class Jatos implements Airplane {
 			if ( this.noar == false ){
 				JOptionPane.showMessageDialog(null,"erro "+this.modelo+" nao esta no ar.");}
 			else{
-			
 			try{
 			String	str = JOptionPane.showInputDialog(null,"Velocidade atual: "+this.velocidade
 					+"\nReduza a velocidade para: " +(this.velocidade - this.velocidade/3));
 			 aux = Integer.parseInt( str.trim()  );
-			if ( this.velocidade > (this.velocidade - this.velocidade/3) ){ 
+			if ( aux > (this.velocidade - this.velocidade/3) ){ 
 				str = "velocidade excedente!";
 				 throw new IllegalArgumentException ( str );}}
 			catch ( IllegalArgumentException iae ){
 				JOptionPane.showMessageDialog(null,iae.getMessage(),"Erro",0);}
-			acelerar(aux);}
+			acelerar(aux);this.noar = false; acelerar(0); 
+			JOptionPane.showMessageDialog(null,""+this.modelo+ " pousou com sucesso");
+			}
 			
 				
 	}
@@ -83,7 +84,7 @@ public abstract class Jatos implements Airplane {
 		
 		public void reabastecer(){
 	    	if ( noar == false ){
-	    	System.out.println("Erro nos sensores");
+	    		JOptionPane.showMessageDialog(null, "Erro nos sensores");
 		 }else{
 	       
 				JOptionPane.showMessageDialog(null, "Avião de reabastecimento acoplado ao "+modelo
@@ -107,7 +108,7 @@ public abstract class Jatos implements Airplane {
 				this.abordo.get(i);}
 		}
 		
-		
+
 		
 		
 	}

@@ -14,6 +14,7 @@ public class Drone extends Jatos {
 		public Drone(){
 			super("Predator",2000,350,2000,0);
 			this.autonomia = 3000;
+			this.misseis = 6;
 		}
 		
 		public Drone(String modelo, int vmax, int vmin,int mss){
