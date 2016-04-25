@@ -64,7 +64,7 @@ public class Main {
 					System.out.println("Erro");	}
 				}
 	
-		else if ( escolha == "Jato Civil" ){
+		 else if ( escolha == "Jato Civil" ){
 			str = JOptionPane.showInputDialog(null,
 					"Decolar			-1-\n"
 					+"Velocidade		-2-\n"
