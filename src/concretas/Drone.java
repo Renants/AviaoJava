@@ -38,35 +38,20 @@ public class Drone extends Jatos {
 	}
 		
 		
-		public void alterarVelocidade(){
-			if ( noar == false ){
-				JOptionPane.showMessageDialog(null,"Erro"+this.modelo+ " ainda em solo");}
-			else{	
-				 String	str = JOptionPane.showInputDialog(null,"Velociade desejada: ");
-				 int v = Integer.parseInt( str.trim() );
-			acelerar(v);
-				}
-	}
-		
+			
 		public void acelerar(int velocidade,boolean turbo){
 			if ( turbo == true ){
 				if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-				setSpeed( velocidade+ 200);}
+				this.velocidade = velocidade+ 200 ; }
 			
 			else if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-					setSpeed( velocidade);
+				this.velocidade = velocidade;
 			else JOptionPane.showMessageDialog(null,"erro, velocidade incorreta");
 			} 
+		 
 				
 		
-	       
-	       public void acelerar(int v){ 
-			if (v > this.velocidademax && v<=0){
-				JOptionPane.showMessageDialog(null,"erro velocidade incorreta");}
-			setSpeed(v);}
-		
-
-	       public  void	disparar(int misseis){
+	    public  void	disparar(int misseis){
 				if ( misseis == 0){
 					 JOptionPane.showMessageDialog(null, "erro, sem misseis");
 				}

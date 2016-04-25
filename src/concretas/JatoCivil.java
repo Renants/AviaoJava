@@ -2,6 +2,8 @@ package concretas;
 import abstratas.Jatos;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class JatoCivil extends Jatos {
 	Scanner entrada = new Scanner(System.in);
 	protected int passageiros;
@@ -20,35 +22,26 @@ public class JatoCivil extends Jatos {
 	public void acelerar(int velocidade,boolean turbo){
 		if ( turbo == true ){
 			if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-			setSpeed( velocidade+ 200);}
-			else if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-			setSpeed( velocidade);
-			else System.out.println("erro velocidade incorreta");
-			} 
+			this.velocidade = velocidade+ 200 ; }
+		
+		else if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
+			this.velocidade = velocidade;
+		else JOptionPane.showMessageDialog(null,"erro, velocidade incorreta");
+		} 
 	
 	public void embarcar(){
 		if ( !noar ){
 		String nome;
 		while ( this.passageiros > 0){
-		System.out.println("Nome do passageiro: ");
+		JOptionPane.showMessageDialog(null,"Nome do passageiro: ");
 		nome = entrada.nextLine();
 		setAbordo(nome);
 		this.passageiros --;}
 		}
 		else
-		System.out.println("Erro" + this.modelo +"ainda em solo");	
+			JOptionPane.showMessageDialog(null,"Erro" + this.modelo +"ainda em solo");	
 	}
 	
-	@Override
-	public void reabastecer(){
-    	if ( !noar ){
-    	System.out.println("Erro "+this.modelo+ "ainda em solo");
-    	}else{
-       	System.out.println("Avião de reabastecimento acoplado ao "+modelo );
-        System.out.println("Reabastecimento do em andamento...");
-        System.out.println( "Autonomia anterior: " +this.autonomia );
-        this.autonomia = this.autonomia + 5;
-        System.out.println("Autonomia Atual: " +this.autonomia); }
-}
+	
 	
 }	

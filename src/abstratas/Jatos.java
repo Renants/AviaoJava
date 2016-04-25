@@ -1,7 +1,6 @@
 package abstratas;
 import interfaces.Airplane;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.swing.JOptionPane;
   
@@ -15,8 +14,7 @@ public abstract class Jatos implements Airplane {
 		protected boolean	noar;
 		protected String	modelo;
 		protected ArrayList<String> abordo = new ArrayList();
-		Scanner entrada = new Scanner(System.in);
-
+		
 		public Jatos(String modelo, int vmax, int vmin, int aut,int cap){
 			this.noar = false;
 			this.gps = false;
@@ -27,6 +25,7 @@ public abstract class Jatos implements Airplane {
 			this.capacidade	   = cap;
 	}
 		
+		
 		public  void	decolar(){
 			if ( noar == true )
 				JOptionPane.showMessageDialog(null,"erro,"+this.modelo+" jah esta no ar.");
@@ -36,36 +35,47 @@ public abstract class Jatos implements Airplane {
 		}
 		
 		public void pousar(){
+			int aux = 0;
 			if ( this.noar == false ){
-				JOptionPane.showMessageDialog(null,"erro "+this.modelo+" jah esta no ar.");}
+				JOptionPane.showMessageDialog(null,"erro "+this.modelo+" nao esta no ar.");}
 			else{
-				int aux;
-			do{
+			
+			try{
 			String	str = JOptionPane.showInputDialog(null,"Velocidade atual: "+this.velocidade
-					+"Reduza a velocidade em  1/3");
+					+"\nReduza a velocidade para: " +(this.velocidade - this.velocidade/3));
 			 aux = Integer.parseInt( str.trim()  );
-			}while(aux > velocidade - (velocidade/3) );
+			if ( this.velocidade > (this.velocidade - this.velocidade/3) ){ 
+				str = "velocidade excedente!";
+				 throw new IllegalArgumentException ( str );}}
+			catch ( IllegalArgumentException iae ){
+				JOptionPane.showMessageDialog(null,iae.getMessage(),"Erro",0);}
 			acelerar(aux);}
 			
 				
 	}
 		
-		
 		public void alterarVelocidade(){
-			if ( noar == false ){
-				JOptionPane.showMessageDialog(null,"Erro"+this.modelo+ " ainda em solo");}
-			else{	
-				 String	str = JOptionPane.showInputDialog(null,"Velociade desejada: ");
-				 int v = Integer.parseInt( str.trim() );
-			acelerar(v);
-				}
-	}
-		
-		
-		public void setSpeed(int v){
-			this.velocidade = v;
-	}	
-		
+			int v=0;
+			String	str = JOptionPane.showInputDialog(null,"Velociade desejada: ");
+				 try{
+					v = Integer.parseInt( str.trim() );
+					 
+					 if ( v < this.velocidademin ){
+						 str = "velocidade insuficiente!";
+						 throw new IllegalArgumentException ( str );}
+					 if ( v > this.velocidademax ){
+						 str = "velocidade excedente!";
+						 throw new IllegalArgumentException ( str );}
+					 }
+				 catch ( NumberFormatException nfe){
+					 JOptionPane.showMessageDialog(null,str,"Erro",0);}
+				 catch ( IllegalArgumentException iae ){
+				
+					 JOptionPane.showMessageDialog(null,iae.getMessage(),"Erro",0);}
+				 acelerar(v); this.noar = true;
+		 
+}
+	
 		public int getSpeed(){
 			return this.velocidade;
 	}
@@ -86,9 +96,7 @@ public abstract class Jatos implements Airplane {
 	        
 	       
 		public void acelerar(int v){ // metodo sobrecarregado na abstrata
-			if (v > this.velocidademax && v <= this.velocidademin){
-				JOptionPane.showMessageDialog(null,"erro velocidade incorreta");}
-			setSpeed(v);}
+			this.velocidade = v;}
 		
 		public void setAbordo(String nome){
 			this.abordo.add(nome);}

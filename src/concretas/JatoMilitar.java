@@ -47,10 +47,10 @@ public class JatoMilitar extends Jatos {
 		public void acelerar(int velocidade,boolean turbo){
 			if ( turbo == true ){
 				if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-				setSpeed( velocidade+ 200);}
+				this.velocidade = velocidade+ 200 ; }
 			
 			else if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
-					setSpeed( velocidade);
+				this.velocidade = velocidade;
 			else JOptionPane.showMessageDialog(null,"erro, velocidade incorreta");
 			} 
 		
