@@ -30,8 +30,8 @@ public abstract class Jatos implements Airplane {
 			if ( noar == true )
 				JOptionPane.showMessageDialog(null,"erro,"+this.modelo+" jah esta no ar.");
 			else
-				alterarVelocidade();
-			JOptionPane.showMessageDialog(null,""+this.modelo+ " decolou");
+			alterarVelocidade();
+			
 		}
 		
 		public void pousar(){
@@ -68,7 +68,7 @@ public abstract class Jatos implements Airplane {
 						 throw new IllegalArgumentException ( str );}
 					 }
 				 catch ( NumberFormatException nfe){
-					 JOptionPane.showMessageDialog(null,str,"Erro",0);}
+					 JOptionPane.showMessageDialog(null,nfe.getMessage(),"Erro",0);}
 				 catch ( IllegalArgumentException iae ){
 				
 					 JOptionPane.showMessageDialog(null,iae.getMessage(),"Erro",0);}
@@ -106,6 +106,9 @@ public abstract class Jatos implements Airplane {
 			for ( int i = 0; i< this.abordo.size(); i++){
 				this.abordo.get(i);}
 		}
+		
+		
+		
 		
 	}
 

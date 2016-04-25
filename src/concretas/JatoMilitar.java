@@ -24,24 +24,24 @@ public class JatoMilitar extends Jatos {
 		}
 		
 		
-		public  void	disparar(int projeteis){
-			if ( projeteis == 0){
-				 JOptionPane.showMessageDialog(null, "erro sem projeteis");
+		public  void dispararProjeteis(int projeteis){
+			if ( this.projeteis == 0){
+				JOptionPane.showMessageDialog(null, "sem projeteis");
 			}
-			else
-				JOptionPane.showMessageDialog(null, "disparo feito");
-				this.projeteis-= 4;
+			JOptionPane.showMessageDialog(null, "disparo feito");
+				this.projeteis-= projeteis;
 		};
 		
-		public  void	disparar(int projeteis,int misseis){
-			if ( this.projeteis == 0 | this.misseis == 0){
-				JOptionPane.showMessageDialog(null, "erro sem projeteis\n"
-													+"erro sem misseis");
+		public  void dispararMisseis(int misseis){
+			if ( this.misseis == 0){
+				JOptionPane.showMessageDialog(null, "sem missesis");
 			}
-			else
-				JOptionPane.showMessageDialog(null, "Disparo feito");
-				this.projeteis-= 4;
+			JOptionPane.showMessageDialog(null, "disparo feito");
+				this.projeteis-= projeteis;
 		};
+		
+		
+		
 		
 
 		public void acelerar(int velocidade,boolean turbo){
@@ -87,9 +87,7 @@ public class JatoMilitar extends Jatos {
 		}
 		
 		
-		public void atacar(){
-			disparar(0,2);
-		}
+		
 	}
 
 

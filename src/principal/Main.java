@@ -1,11 +1,12 @@
 package principal;
 import static interfaces.Airplane.frame;
-import interfaces.Airplane;
+import abstratas.Jatos;
 import concretas.JatoMilitar;
 import	concretas.JatoCivil;
+import concretas.Drone;
 import javax.swing.JOptionPane;
 public class Main {
-	public static Airplane jato;
+	public static Jatos jato;
 	
 	public static void main(String[] args) {
 		String[] Hangar = {"Jato Militar","Jato Civil", "Drone"};
@@ -55,7 +56,7 @@ public class Main {
 					((JatoMilitar) jato).reabastecimentoAerio();
 					break;
 				case 5:
-					((JatoMilitar) jato).atacar();
+					atacar(jato);
 					break;
 				case 6:
 					jato.pousar();
@@ -95,8 +96,8 @@ public class Main {
 			str = JOptionPane.showInputDialog(null,
 					"Decolar		-1-\n"
 					+"Velocidade	-2-\n"
-					+"Pousar		-3-\n");
-			
+					+"Pousar		-3-\n"
+					+"Atacar        -4-");
 			op = Integer.parseInt( str.trim()  );
 			switch (op){
 			case 1:
@@ -108,10 +109,32 @@ public class Main {
 			case 3:
 				jato.pousar();
 				break;
+			case 4:
+				atacar(jato);
 			default:
 				JOptionPane.showMessageDialog(null,"Erro");}
 		}
 			return 0;
 	}
 
+	public static void atacar( Jatos jato ){
+		if ( jato instanceof JatoMilitar ){
+			String str = JOptionPane.showInputDialog(null,
+					"Projeteis		-1-\n"
+					+"Misseis		-2-\n");
+			int op = Integer.parseInt( str.trim()  );
+			switch ( op ){
+			case 1:
+				((JatoMilitar) jato).dispararProjeteis(2);
+				break;
+			case 2:
+				((JatoMilitar) jato).dispararMisseis(1);
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,"Erro");	
+			}}
+			else if ( jato instanceof Drone )
+			((Drone) jato).dispararMisseis(1);
+		}
+	
 }

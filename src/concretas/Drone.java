@@ -50,13 +50,12 @@ public class Drone extends Jatos {
 		 
 				
 		
-	    public  void	disparar(int misseis){
-				if ( misseis == 0){
-					 JOptionPane.showMessageDialog(null, "erro, sem misseis");
+			public  void dispararMisseis(int misseis){
+				if ( this.misseis == 0){
+					JOptionPane.showMessageDialog(null, "sem missesis");
 				}
-				else
-					JOptionPane.showMessageDialog(null, "disparo feito");
-					this.misseis-= 1;
+				JOptionPane.showMessageDialog(null, "disparo feito");
+					this.misseis-= misseis;
 			};
 }
 
