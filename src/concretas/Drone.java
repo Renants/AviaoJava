@@ -13,13 +13,17 @@ public class Drone extends Jatos {
 		String modelo;
 		public Drone(){
 			super("Predator",2000,350,2000,0);
-			this.autonomia = 3000;
 			this.misseis = 6;
 		}
 		
 		public Drone(String modelo, int vmax, int vmin,int mss){
 			super("Predator",vmax,vmin,2000,0);
 			this.misseis = mss;
+		}
+		
+		public Drone ( Drone d){
+			super( d);
+			this.misseis = d.misseis;
 		}
 		
 		public  void	decolar(){
@@ -51,13 +55,19 @@ public class Drone extends Jatos {
 		 
 				
 		
-			public  void dispararMisseis(int misseis){
-				if ( this.misseis == 0){
-					JOptionPane.showMessageDialog(null, "sem missesis");
-				}
-				JOptionPane.showMessageDialog(null, "disparo feito");
-					this.misseis-= misseis;
-			};
+			public void dispararMisseis(int misseis){
+				if ( this.misseis == 0 )
+				JOptionPane.showMessageDialog(null,"Sem munição");
+				else
+					JOptionPane.showMessageDialog(null,"Disparo Feito");
+				this.misseis --;
+			}
+			
+			public void autoDestruição(){
+				JOptionPane.showMessageDialog(null,"O "+this.modelo+" jah era");
+			} 
+			
+			
 }
 
 

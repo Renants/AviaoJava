@@ -110,6 +110,7 @@ public class Main {
 				break;
 			case 4:
 				atacar(jato);
+				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Erro");}
 		}
@@ -144,7 +145,7 @@ public class Main {
 				((Drone) jato).dispararMisseis(1);
 				break;
 				case 2:
-				JOptionPane.showMessageDialog(null,"Drone jah era");
+				jato.autoDestruição();
 				System.exit(0);
 				}
 				

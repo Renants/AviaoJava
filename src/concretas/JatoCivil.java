@@ -18,7 +18,11 @@ public class JatoCivil extends Jatos {
 			this.passageiros = pass;
 	}
 			
-		
+	public JatoCivil( JatoCivil j ){
+		super(j);
+		this.passageiros = j.passageiros;
+	}
+	
 	public void acelerar(int velocidade,boolean turbo){
 		if ( turbo == true ){
 			if ( velocidade <= this.velocidademax && velocidade > this.velocidademin )
@@ -43,5 +47,5 @@ public class JatoCivil extends Jatos {
 	}
 	
 	
-	
+	public void dispararMisseis(int misseis){} // abstrato;
 }	

@@ -1,5 +1,6 @@
 package concretas;
 import  abstratas.Jatos;
+
 import javax.swing.JOptionPane;
 
 public class JatoMilitar extends Jatos {
@@ -7,6 +8,7 @@ public class JatoMilitar extends Jatos {
 		protected int misseis;
 		protected boolean turbo;
 		protected boolean sensor;
+		
 		public JatoMilitar(){
 			super("Raptor",2000,350,2000,2);
 			this.turbo = true;
@@ -23,6 +25,13 @@ public class JatoMilitar extends Jatos {
 			this.misseis   = misseis;
 		}
 		
+		public JatoMilitar( JatoMilitar j){
+			super( j );
+			this.turbo = j.turbo;
+			this.sensor= j.sensor;
+			this.projeteis = j.projeteis;
+			this.misseis = j.projeteis;
+		}
 		
 		public  void dispararProjeteis(int projeteis){
 			if ( this.projeteis == 0){
@@ -89,7 +98,7 @@ public class JatoMilitar extends Jatos {
 		}
 		
 		
-		
+				
 	}
 
 

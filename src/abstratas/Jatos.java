@@ -1,10 +1,10 @@
 package abstratas;
 import interfaces.Airplane;
+import interfaces.Atacavel;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
   
-public abstract class Jatos implements Airplane {
+public abstract class Jatos implements Airplane,Atacavel {
 	 	protected int		velocidade;
 		protected int		velocidademax;
 		protected int		velocidademin;
@@ -24,7 +24,15 @@ public abstract class Jatos implements Airplane {
 			this.autonomia	   = aut;
 			this.capacidade	   = cap;
 	}
-		
+		public Jatos( Jatos j ){
+			this.velocidademax = j.velocidademax;
+			this.velocidademin = j.velocidademin;
+			this.autonomia		= j.autonomia;
+			this.capacidade		= j.capacidade;
+			this.noar			= j.noar;
+			this.modelo			= j .modelo;
+			this.abordo			= j.abordo;
+		}
 		
 		public  void	decolar(){
 			if ( noar == true )
@@ -94,13 +102,13 @@ public abstract class Jatos implements Airplane {
 		        JOptionPane.showMessageDialog(null,"Autonomia Atual: " +this.autonomia); 
 	    }
 		}
-	        
-	       
+		
 		public void acelerar(int v){ // metodo sobrecarregado na abstrata
 			this.velocidade = v;}
 		
 		public void setAbordo(String nome){
 			this.abordo.add(nome);}
+		
 		
 		public void getAbordo(){
 			JOptionPane.showMessageDialog(null,"A bordo: ");
@@ -109,7 +117,9 @@ public abstract class Jatos implements Airplane {
 		}
 		
 
-		
+		public void dispararMisseis(){}    
+		public void reabastecimentoAerio(){} // especifica de Jato Militar
+		public void autoDestruição(){}		// especificar de Drone
 		
 	}
 
